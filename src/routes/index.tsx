@@ -1,24 +1,68 @@
 import { createFileRoute } from "@tanstack/react-router";
+import giftCardImage from "@/assets/gift-card.png";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Get Your Reward" },
+      { name: "description", content: "Follow a few simple steps to receive your reward." },
+      { property: "og:title", content: "Get Your Reward" },
+      { property: "og:description", content: "Follow a few simple steps to receive your reward." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const steps = [
+  "Click the button below",
+  "Enter your email & basic info",
+  "Complete 3 to 5 required deals",
+  "Receive your reward once verified",
+];
+
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="flex min-h-screen items-center justify-center bg-background px-6 py-12">
+      <div className="mx-auto flex w-full max-w-md flex-col items-center text-center">
+        <img
+          src={giftCardImage}
+          alt="Reward card"
+          width={512}
+          height={288}
+          className="mb-8 w-full max-w-xs rounded-2xl object-contain"
+        />
+
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+          Follow the steps to receive your reward
+        </h1>
+
+        <ol className="mt-8 w-full space-y-4 text-left">
+          {steps.map((step, index) => (
+            <li
+              key={index}
+              className="flex items-start gap-4 rounded-xl border border-border bg-card p-4 text-card-foreground shadow-sm"
+            >
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary text-sm font-medium text-secondary-foreground">
+                {index + 1}
+              </span>
+              <span className="pt-0.5 text-base text-foreground">{step}</span>
+            </li>
+          ))}
+        </ol>
+
+        <button
+          type="button"
+          className="mt-10 w-full rounded-xl bg-primary px-6 py-4 text-lg font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        >
+          Get Started
+        </button>
+
+        <p className="mt-4 text-xs text-muted-foreground">
+          Available in selected countries - US, UK, AU, CA
+        </p>
+      </div>
+    </main>
   );
 }
