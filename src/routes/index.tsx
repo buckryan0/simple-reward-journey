@@ -52,12 +52,12 @@ function Index() {
           ))}
         </ol>
 
-        <button
-          type="button"
-          className="mt-10 w-full rounded-xl bg-primary px-6 py-4 text-lg font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        <a
+          href="https://trksy.org/aff_c?offer_id=144&aff_id=22364"
+          className="mt-10 w-full rounded-xl bg-primary px-6 py-4 text-center text-lg font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
           Get Started
-        </button>
+        </a>
 
         <p className="mt-4 text-xs text-muted-foreground">
           Available in selected countries - US, UK, AU, CA
