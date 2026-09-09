@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import giftCardImage from "@/assets/gift-card.png";
+import giftCardImage from "@/assets/gift-card.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
